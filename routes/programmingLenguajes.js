@@ -27,5 +27,15 @@ router.patch("/", async function (req, res, next) {
     console.error(err.message)
     next(err)
   }
+  
+})
+
+router.delete("/", async function (req, res, next) {
+  try {
+    res.json(await programminLenguaje.erase(req.query.id))
+  } catch (err) {
+    console.error(err.message)
+    next(err)
+  }
 })
 module.exports = router

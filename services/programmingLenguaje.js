@@ -44,9 +44,19 @@ async function read(page = 1) {
     metadata,
   }
 }
+async function erase(id) {
+  const resultado = db.query(`DELETE FROM lenguajes_programacion WHERE id=${id}`)
+   let message = "Error al actualizar el lenguaje de programacion"
+   if (resultado.affectedRows) {
+     message = "Se elimino con exito"
+   }
+   return { message }
+  
+}
 
 module.exports = {
   read,
   create,
   update,
+  erase,
 }
